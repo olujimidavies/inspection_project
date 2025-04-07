@@ -1,0 +1,87 @@
+
+<div class="row mb-4">
+    <div class="col">
+        <h2>Welcome to my test project, {{ username }}</h2>
+        <a href="{% url 'logout' %}" class="btn btn-outline-secondary">Logout</a>
+        <a href="{% url 'home' %}" class="btn btn-outline-primary ms-2">Go Back to Inspections</a>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <h3>Inspection Details</h3>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Attribute 1</th>
+                            <th>Attribute 2</th>
+                            <th>Attribute 3</th>
+                            <th>Attribute 4</th>
+                            <th>Attribute 5</th>
+                            <th>Attribute 6</th>
+                            <th>Attribute 7</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ inspection.id }}</td>
+                            <td>{{ inspection.Attribute_1 }}</td>
+                            <td>{{ inspection.Attribute_2 }}</td>
+                            <td>{{ inspection.Attribute_3 }}</td>
+                            <td>{{ inspection.Attribute_4 }}</td>
+                            <td>{{ inspection.Attribute_5 }}</td>
+                            <td>{{ inspection.Attribute_6 }}</td>
+                            <td>{{ inspection.Attribute_7 }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <h3>Conditions</h3>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Attribute 1</th>
+                            <th>Attribute 2</th>
+                            <th>Attribute 3</th>
+                            <th>Attribute 4</th>
+                            <th>Attribute 5</th>
+                            <th>Attribute 6</th>
+                            <th>Attribute 7</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for condition in conditions %}
+                        <tr>
+                            <td>{{ condition.id }}</td>
+                            <td>{{ condition.Attribute_1 }}</td>
+                            <td>{{ condition.Attribute_2 }}</td>
+                            <td>{{ condition.Attribute_3 }}</td>
+                            <td>{{ condition.Attribute_4 }}</td>
+                            <td>{{ condition.Attribute_5 }}</td>
+                            <td>{{ condition.Attribute_6 }}</td>
+                            <td>{{ condition.Attribute_7 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

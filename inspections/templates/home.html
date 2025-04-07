@@ -1,0 +1,59 @@
+
+<div class="row mb-3">
+    <div class="col-9">
+      <h2>Welcome to my Damilola's project, {{ username }}</h2>
+    </div>
+    <div class="col-3 text-end">
+      <a href="{% url 'logout' %}" class="btn btn-outline-secondary">Logout</a>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <h3>Inspections</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover" id="inspectionsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Attribute 1</th>
+                            <th>Attribute 2</th>
+                            <th>Attribute 3</th>
+                            <th>Attribute 4</th>
+                            <th>Attribute 5</th>
+                            <th>Attribute 6</th>
+                            <th>Attribute 7</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr data-inspection-id="{{ inspection.id }}">
+                            <td>{{ inspection.id }}</td>
+                            <td>{{ inspection.Attribute_1 }}</td>
+                            <td>{{ inspection.Attribute_2 }}</td>
+                            <td>{{ inspection.Attribute_3 }}</td>
+                            <td>{{ inspection.Attribute_4 }}</td>
+                            <td>{{ inspection.Attribute_5 }}</td>
+                            <td>{{ inspection.Attribute_6 }}</td>
+                            <td>{{ inspection.Attribute_7 }}</td>
+                        </tr>
+                   
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Add click event listener to table rows
+        $("#inspectionsTable tbody tr").click(function() {
+            var inspectionId = $(this).data("inspection-id");
+            window.location.href = "/conditions/" + inspectionId + "/";
+        });
+    });
+</script>
