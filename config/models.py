@@ -13,7 +13,7 @@ class Inspection(models.Model):
         return str(self.id)
     
     class Meta:
-        db_table = "config_inspection"  # Unique table name for Inspection model in config app
+        db_table = "config_inspection"  # Unique table name for Inspection model in config app when using the database.
 
 class Condition(models.Model):
     Inspection = models.ForeignKey(

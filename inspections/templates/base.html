@@ -12,10 +12,32 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery.redirect@1.1.4/jquery.redirect.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            margin-top: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: white;
+            border-bottom: none;
+        }
+        .btn-primary {
+            background-color: #3366ff;
+            border-color: #3366ff;
+        }
+        .btn-primary:hover {
+            background-color: #254eda;
+            border-color: #254eda;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-4">
-        
+        {% block content %}
+        {% endblock %}
     </div>
 </body>
 </html>

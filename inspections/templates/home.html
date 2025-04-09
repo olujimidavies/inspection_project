@@ -1,59 +1,77 @@
-
-<div class="row mb-3">
-    <div class="col-9">
-      <h2>Welcome to my Damilola's project, {{ username }}</h2>
-    </div>
-    <div class="col-3 text-end">
-      <a href="{% url 'logout' %}" class="btn btn-outline-secondary">Logout</a>
-    </div>
-  </div>
-
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="card-header">
-                <h3>Inspections</h3>
-            </div>
-            <div class="card-body">
-                <table class="table table-hover" id="inspectionsTable">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Attribute 1</th>
-                            <th>Attribute 2</th>
-                            <th>Attribute 3</th>
-                            <th>Attribute 4</th>
-                            <th>Attribute 5</th>
-                            <th>Attribute 6</th>
-                            <th>Attribute 7</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                        <tr data-inspection-id="{{ inspection.id }}">
-                            <td>{{ inspection.id }}</td>
-                            <td>{{ inspection.Attribute_1 }}</td>
-                            <td>{{ inspection.Attribute_2 }}</td>
-                            <td>{{ inspection.Attribute_3 }}</td>
-                            <td>{{ inspection.Attribute_4 }}</td>
-                            <td>{{ inspection.Attribute_5 }}</td>
-                            <td>{{ inspection.Attribute_6 }}</td>
-                            <td>{{ inspection.Attribute_7 }}</td>
-                        </tr>
-                   
-                    </tbody>
-                </table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspections - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .table-container {
+            margin-top: 2rem;
+        }
+        #inspectionsTable tbody tr {
+            cursor: pointer;
+            background-color: #f8f9fa;
+        }
+        #inspectionsTable tbody tr:hover {
+            background-color: #e9ecef;
+        }
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="header-row">
+            <div>Logged in as {{ username }}</div>
+            <div>
+                <a href="{% url 'logout' %}" class="text-decoration-none">Logout</a>
             </div>
         </div>
-    </div>
-</div>
 
-<script>
-    $(document).ready(function() {
-        // Add click event listener to table rows
-        $("#inspectionsTable tbody tr").click(function() {
-            var inspectionId = $(this).data("inspection-id");
-            window.location.href = "/conditions/" + inspectionId + "/";
+        <table class="table" id="inspectionsTable">
+            <thead>
+                <tr>
+                    <th>InspectionID</th>
+                    <th>Attribute 1</th>
+                    <th>Attribute 2</th>
+                    <th>Attribute 3</th>
+                    <th>Attribute 4</th>
+                    <th>Attribute 5</th>
+                    <th>Attribute 6</th>
+                    <th>Attribute 7</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inspection in inspections %}
+                <tr data-inspection-id="{{ inspection.id }}" class="clickable-row">
+                    <td>{{ inspection.id }}</td>
+                    <td>{{ inspection.Attribute_1 }}</td>
+                    <td>{{ inspection.Attribute_2 }}</td>
+                    <td>{{ inspection.Attribute_3 }}</td>
+                    <td>{{ inspection.Attribute_4 }}</td>
+                    <td>{{ inspection.Attribute_5 }}</td>
+                    <td>{{ inspection.Attribute_6 }}</td>
+                    <td>{{ inspection.Attribute_7 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".clickable-row").click(function() {
+                var inspectionId = $(this).data("inspection-id");
+                window.location.href = "/conditions/" + inspectionId + "/";
+            });
         });
-    });
-</script>
+    </script>
+</body>
+</html>
